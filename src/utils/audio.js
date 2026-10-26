@@ -50,5 +50,5 @@ export const playSparkle = () => sfx('sparkle', { volume: 0.55 });
 let minionVoice;
 export function minionSay(clip) {
   minionVoice?.pause();
-  minionVoice = sfx(clip, { volume: 0.95, duckMusic: true });
+  minionVoice = sfx(clip, { volume: 0.35, duckMusic: true });
 }
