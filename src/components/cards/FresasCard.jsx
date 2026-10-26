@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Cherry } from 'lucide-react';
 import Card from '../Card';
 import { Strawberry } from '../Art';
-import { playChime, playPop } from '../../utils/audio';
+import { playPop, sfx } from '../../utils/audio';
 
 // 19 años, 19 fresas, 19 razones
 const REASONS = [
@@ -42,7 +42,7 @@ export default function FresasCard({ onRain }) {
     setPicked(next);
     setLast(i);
     if (next.length === REASONS.length) {
-      playChime();
+      sfx('tada', { volume: 0.6, duckMusic: true });
       onRain('strawberry');
     }
   };

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Ruler, PenLine } from 'lucide-react';
 import Card from '../Card';
-import { playChime, playSwoosh } from '../../utils/audio';
+import { playSparkle, sfx } from '../../utils/audio';
 
 const ROOMS = [
   { x: 24, y: 24, w: 150, h: 100, label: 'Estudio de la Arq.', sub: 'mesa de dibujo + maquetas' },
@@ -15,12 +15,13 @@ export default function ArquitectaCard() {
   const [signed, setSigned] = useState(false);
 
   const draw = () => {
-    playSwoosh();
+    sfx('pencil', { volume: 0.6 });
     setDrawn(true);
   };
 
   const sign = () => {
-    playChime();
+    sfx('stamp', { volume: 0.8 });
+    setTimeout(playSparkle, 350);
     setSigned(true);
   };
 

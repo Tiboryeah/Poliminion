@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { UtensilsCrossed } from 'lucide-react';
 import Card from '../Card';
 import { Nigiri } from '../Art';
-import { playChime, playClick } from '../../utils/audio';
+import { minionSay, playClick, sfx } from '../../utils/audio';
 
 const MENU = [
   'Philadelphia roll',
@@ -25,7 +25,8 @@ export default function SushitoCard({ onRain }) {
   };
 
   const confirm = () => {
-    playChime();
+    sfx('register', { volume: 0.6 });
+    setTimeout(() => minionSay('itadakimasu'), 1100);
     setTicket(true);
     onRain('maki');
   };

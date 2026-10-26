@@ -53,21 +53,29 @@ export function Minion({ className = '', mood = 'happy', waving = false }) {
   );
 }
 
+const PETALS = Array.from({ length: 18 }, (_, i) => i * 20);
+
+// Gerbera centrada en 0,0 con radio ~48, para usarla dentro de otro SVG
+export function GerberaShape({ color = '#ff6fa3' }) {
+  return (
+    <>
+      {PETALS.map((a) => (
+        <ellipse key={a} cx="0" cy="-30" rx="6.5" ry="18" fill={color} transform={`rotate(${a})`} />
+      ))}
+      {PETALS.map((a) => (
+        <ellipse key={`i${a}`} cx="0" cy="-22" rx="4" ry="11" fill="#fff" opacity=".22" transform={`rotate(${a + 10})`} />
+      ))}
+      <circle r="14" fill="#f2b33d" />
+      <circle r="9" fill="#5b3a1a" />
+      <circle r="4" fill="#2e1c0c" />
+    </>
+  );
+}
+
 export function Gerbera({ color = '#ff6fa3', size = 60, className = '' }) {
-  const petals = Array.from({ length: 18 }, (_, i) => i * 20);
   return (
     <svg className={className} width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
-      <g transform="translate(50 50)">
-        {petals.map((a) => (
-          <ellipse key={a} cx="0" cy="-30" rx="6.5" ry="18" fill={color} transform={`rotate(${a})`} />
-        ))}
-        {petals.map((a) => (
-          <ellipse key={`i${a}`} cx="0" cy="-22" rx="4" ry="11" fill="#fff" opacity=".22" transform={`rotate(${a + 10})`} />
-        ))}
-        <circle r="14" fill="#f2b33d" />
-        <circle r="9" fill="#5b3a1a" />
-        <circle r="4" fill="#2e1c0c" />
-      </g>
+      <g transform="translate(50 50)"><GerberaShape color={color} /></g>
     </svg>
   );
 }

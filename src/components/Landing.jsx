@@ -7,7 +7,7 @@ export default function Landing({ onStart }) {
 
   const open = () => {
     playPop();
-    minionSay('¡Bello Fresita!');
+    minionSay('bello');
     setLeaving(true);
     setTimeout(onStart, 750);
   };

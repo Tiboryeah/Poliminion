@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Cake, Wind } from 'lucide-react';
 import Card from '../Card';
-import { playChime, playPop } from '../../utils/audio';
+import { minionSay, sfx } from '../../utils/audio';
 
 const CANDLES = 19;
 
@@ -14,13 +14,14 @@ export default function CakeCard({ onRain }) {
   const allOut = out.length === CANDLES;
 
   const finish = () => {
-    playChime();
+    sfx('blow', { volume: 0.8 });
+    minionSay('happy-birthday');
     onRain('mix');
   };
 
   const blowOne = (i) => {
     if (out.includes(i)) return;
-    playPop();
+    sfx('blow', { volume: 0.45 });
     const next = [...out, i];
     setOut(next);
     if (next.length === CANDLES) finish();

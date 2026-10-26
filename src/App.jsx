@@ -13,7 +13,7 @@ import SushitoCard from './components/cards/SushitoCard';
 import FortniteCard from './components/cards/FortniteCard';
 import OkOkCard from './components/cards/OkOkCard';
 import CakeCard from './components/cards/CakeCard';
-import { playChime } from './utils/audio';
+import { preloadSounds, sfx } from './utils/audio';
 
 // Pon el mp3 en public/music/ok-ok.mp3 y sonará solito al entrar
 const SONG = {
@@ -33,6 +33,7 @@ export default function App() {
 
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = 0.4;
+    preloadSounds();
   }, []);
 
   const play = () => {
@@ -69,12 +70,13 @@ export default function App() {
   };
 
   const celebrate = () => {
-    playChime();
+    sfx('party');
     rain('mix');
   };
 
   const start = () => {
     setStarted(true);
+    sfx('party', { volume: 0.5 });
     play();
     setTimeout(() => rain('mix'), 450);
   };
@@ -178,6 +180,7 @@ export default function App() {
       )}
 
       <audio
+        id="bg-music"
         ref={audioRef}
         src={SONG.url}
         preload="auto"

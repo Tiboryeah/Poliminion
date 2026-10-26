@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { Gamepad2, Crown } from 'lucide-react';
 import Card from '../Card';
-import { playFanfare, playSwoosh } from '../../utils/audio';
+import { sfx } from '../../utils/audio';
 
 export default function FortniteCard({ onRain }) {
   const [phase, setPhase] = useState('bus'); // bus → falling → victory
 
   const jump = () => {
-    playSwoosh();
+    sfx('bus', { volume: 0.6 });
+    setTimeout(() => sfx('whoosh', { volume: 0.5 }), 450);
     setPhase('falling');
     setTimeout(() => {
-      playFanfare();
+      sfx('victory', { volume: 0.75, duckMusic: true });
       setPhase('victory');
       onRain('star');
     }, 1600);

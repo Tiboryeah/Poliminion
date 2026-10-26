@@ -2,16 +2,16 @@ import { useState } from 'react';
 import { Banana as BananaIcon } from 'lucide-react';
 import Card from '../Card';
 import { Minion } from '../Art';
-import { minionSay, playPop } from '../../utils/audio';
+import { minionSay } from '../../utils/audio';
 
 const PHRASES = [
-  { text: '¡Bello, Poliminion!', say: 'Bello Poliminion', mood: 'happy' },
-  { text: '¡Tulaliloo ti amo!', say: 'Tulaliloo ti amo', mood: 'love' },
-  { text: '¡Bee-do bee-do bee-do!', say: 'Bido bido bido', mood: 'wow' },
-  { text: '¡Banana! (pero tú eres más dulce)', say: 'Banaaana', mood: 'happy' },
-  { text: '¡Poopaye! …mentira, aquí me quedo', say: 'Pupayé', mood: 'wow' },
-  { text: '¡Kampai por tus 19!', say: 'Kampai', mood: 'love' },
-  { text: '¡Bello, futura arquitecta!', say: 'Bello arquitecta', mood: 'happy' },
+  { text: '¡Bello, Poliminion!', say: 'bello', mood: 'happy' },
+  { text: '¡Bee-do bee-do bee-do!', say: 'bee-do', mood: 'wow' },
+  { text: '¡Banana! (pero tú eres más dulce)', say: 'banana', mood: 'happy' },
+  { text: 'Jajaja… (tu risa es más bonita)', say: 'risa', mood: 'love' },
+  { text: '¡Poopaye! …mentira, aquí me quedo', say: 'poopaye', mood: 'wow' },
+  { text: '¡Yes! ¡19 años!', say: 'yes', mood: 'love' },
+  { text: '¡Bello, futura arquitecta!', say: 'bello', mood: 'happy' },
 ];
 
 export default function MinionCard({ onRain }) {
@@ -19,7 +19,6 @@ export default function MinionCard({ onRain }) {
   const [count, setCount] = useState(0);
 
   const talk = () => {
-    playPop();
     const next = PHRASES[count % PHRASES.length];
     setPhrase(next);
     setCount((c) => c + 1);
