@@ -328,11 +328,32 @@ em { font-style: italic; font-family: var(--font-serif); color: var(--minion); }
 @keyframes pick { 50% { transform: scale(1.35) rotate(12deg); } }
 .berry-num { position: absolute; bottom: 2px; right: 6px; font: 700 11px var(--font-display); color: var(--ink-soft); }
 .berry-reason {
-  display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 64px; justify-content: center;
-  padding: 10px 16px; border-radius: 18px; background: var(--navy); color: var(--yellow); text-align: center;
+  position: relative; display: flex; align-items: center; gap: 18px; min-height: 112px;
+  padding: 18px 22px; border-radius: 22px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(255, 138, 155, .22), transparent 45%),
+    radial-gradient(rgba(232, 52, 78, .09) 1.5px, transparent 1.6px) 0 0 / 16px 16px,
+    #fff;
+  border: 2px solid rgba(232, 52, 78, .18);
+  box-shadow: 0 14px 30px -18px rgba(232, 52, 78, .55), inset 0 -4px 0 rgba(255, 138, 155, .18);
+  color: var(--ink);
 }
-.berry-reason strong { font: 600 12px var(--font-display); letter-spacing: .14em; text-transform: uppercase; color: var(--berry-soft); }
-.berry-reason span:not(.muted) { font: 700 24px/1.15 var(--font-hand); }
+.reason-tape {
+  position: absolute; top: -10px; right: 34px; width: 74px; height: 22px; transform: rotate(5deg);
+  background: rgba(255, 216, 77, .8); border-radius: 2px;
+}
+.reason-badge { position: relative; flex: none; display: grid; place-items: center; filter: drop-shadow(0 6px 8px rgba(232, 52, 78, .3)); }
+.reason-badge span {
+  position: absolute; top: 54%; left: 50%; transform: translate(-50%, -50%);
+  font: 700 20px var(--font-display); color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+}
+.berry-reason:not(.empty) .reason-badge svg { animation: pick .45s ease; }
+.reason-copy { display: flex; flex-direction: column; gap: 2px; min-width: 0; animation: reasonIn .45s cubic-bezier(.2, .9, .3, 1.2); }
+@keyframes reasonIn { from { opacity: 0; transform: translateY(8px); } }
+.reason-label { font: 700 12px var(--font-display); letter-spacing: .16em; text-transform: uppercase; color: var(--berry); }
+.reason-copy p { margin: 0; font: 700 clamp(24px, 3.4vw, 30px)/1.15 var(--font-hand); color: var(--navy); }
+.berry-reason.empty .reason-copy p { color: var(--ink-soft); font-size: 24px; }
+.berry-reason.empty .reason-badge { opacity: .55; }
 .progress { height: 10px; border-radius: 999px; background: rgba(15, 34, 68, .12); overflow: hidden; }
 .progress span { display: block; height: 100%; background: linear-gradient(90deg, var(--berry-soft), var(--berry)); transition: width .4s ease; }
 

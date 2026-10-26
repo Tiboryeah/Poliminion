@@ -9,7 +9,7 @@ const REASONS = [
   'Tu risa. Ya sabes que es mi sonido favorito.',
   'Lo dulce que eres, más que cualquier fresa.',
   'Que te emocionen los minions como a una niña.',
-  'Lo talentosa que eres dibujando y diseñando.',
+  'Lo creativa que eres, siempre con ideas nuevas en la cabeza.',
   'Que vas a ser la mejor arquitecta del mundo.',
   'Que vas a diseñar nuestra casa (y confío en ti).',
   'Lo bien que te ves de amarillo pastel.',
@@ -69,15 +69,18 @@ export default function FresasCard({ onRain }) {
           </button>
         ))}
       </div>
-      <div className="berry-reason" aria-live="polite">
-        {last === null ? (
-          <span className="muted">Empieza por la que quieras…</span>
-        ) : (
-          <>
-            <strong>Razón #{last + 1}</strong>
-            <span>{REASONS[last]}</span>
-          </>
-        )}
+      <div className={`berry-reason ${last === null ? 'empty' : ''}`} aria-live="polite">
+        <span className="reason-tape" aria-hidden="true" />
+        <div className="reason-badge" aria-hidden="true">
+          <Strawberry size={64} />
+          <span>{last === null ? '?' : last + 1}</span>
+        </div>
+        <div key={last} className="reason-copy">
+          <span className="reason-label">
+            {last === null ? 'Tu canasta te espera' : `Razón ${last + 1} de 19`}
+          </span>
+          <p>{last === null ? 'Toca cualquier fresa para descubrir la primera…' : REASONS[last]}</p>
+        </div>
       </div>
       <div className="progress" role="progressbar" aria-valuemin={0} aria-valuemax={19} aria-valuenow={picked.length}>
         <span style={{ width: `${(picked.length / REASONS.length) * 100}%` }} />
