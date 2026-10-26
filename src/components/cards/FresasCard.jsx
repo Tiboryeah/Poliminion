@@ -14,7 +14,7 @@ const REASONS = [
   'Que vas a diseñar nuestra casa (y confío en ti).',
   'Lo bien que te ves de amarillo pastel.',
   'Que el azul marino también te queda perfecto.',
-  'Cómo se te iluminan los ojos con el sushi.',
+  'Cómo se te iluminan los ojos con unos chilaquiles.',
   'Que tu lugar favorito sea Sushito (ya tengo un plan).',
   'Las partidas de Fortnite contigo.',
   'Cómo te ríes cuando perdemos en Fortnite.',
