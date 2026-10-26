@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Cherry } from 'lucide-react';
 import Card from '../Card';
 import { Strawberry } from '../Art';
-import { playPop, sfx } from '../../utils/audio';
+import { BIRTHDAY_TUNE, playNote, playTuneFinale } from '../../utils/audio';
 
 // 19 años, 19 fresas, 19 razones
 const REASONS = [
@@ -37,12 +37,12 @@ export default function FresasCard({ onRain }) {
       setLast(i);
       return;
     }
-    playPop();
+    playNote(BIRTHDAY_TUNE[picked.length]);
     const next = [...picked, i];
     setPicked(next);
     setLast(i);
     if (next.length === REASONS.length) {
-      sfx('tada', { volume: 0.6, duckMusic: true });
+      setTimeout(playTuneFinale, 650);
       onRain('strawberry');
     }
   };
@@ -86,7 +86,11 @@ export default function FresasCard({ onRain }) {
         <span style={{ width: `${(picked.length / REASONS.length) * 100}%` }} />
       </div>
       <p className="tiny-note">
-        {done ? '¡Canasta completa! 19 razones y me quedé corto.' : `${picked.length} de 19 fresas recogidas`}
+        {done
+          ? '¡Canasta completa! 19 razones, una canción, y me quedé corto.'
+          : picked.length === 0
+            ? 'Cada fresa toca una notita… a ver qué canción sale.'
+            : `${picked.length} de 19 fresas recogidas`}
       </p>
     </Card>
   );
