@@ -21,7 +21,7 @@ const REASONS = [
   'Que tu canción sea "OK OK" y suene increíble contigo.',
   'Que te encanten las gerberas (muy buen gusto).',
   'Que ves el mundo rosita y con brillitos (y lo haces más bonito).',
-  'Las ganas que le echas, aunque te desveles para sacar la carrera.',
+  'Cómo le echas ganas a la carrera, aunque tengas que desvelarte.',
   'Que me dejes decirte Poliminion.',
   'Que existas. Así de simple.',
   'Que hoy cumples 19 y yo puedo celebrarlo contigo.',
