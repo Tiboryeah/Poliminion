@@ -20,7 +20,7 @@ const REASONS = [
   'Cómo te ríes cuando perdemos en Fortnite.',
   'Que tu canción sea "OK OK" y suene increíble contigo.',
   'Que te encanten las gerberas (muy buen gusto).',
-  'Tu forma de ver el mundo, como un plano lleno de ideas.',
+  'Que ves el mundo rosita y con brillitos (y lo haces más bonito).',
   'Lo dedicada que eres con la carrera.',
   'Que me dejes decirte Poliminion.',
   'Que existas. Así de simple.',
